@@ -18,5 +18,9 @@ jobs:
         with:
           go-version: '1.23.0'
 
-      - name: Force Failure
-        run: (exit 1)
+      - name: Print Go Version
+        uses: actions/echo
+        run: echo {go-version}
+
+      - name: Force Exit
+        run: (exit 0)
