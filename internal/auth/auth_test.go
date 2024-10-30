@@ -7,9 +7,9 @@ import (
 
 func TestGetAPIKey(t *testing.T) {
 	type test struct {
-        input http.Header
-        want  string
-    }
+		input http.Header
+		want  string
+	}
 
 	h1 := http.Header{}
 	h1.Set("Authorization", "ApiKey somevalue")
@@ -17,12 +17,12 @@ func TestGetAPIKey(t *testing.T) {
 	tests := []test{
 		{
 			input: h1,
-			want: "somevalue",
+			want:  "somevalue",
 		},
 	}
 
 	for _, tc := range tests {
-		got, err := GetAPIKey(tc.input)
+		got, _ := GetAPIKey(tc.input)
 		if got != tc.want {
 			t.Fatalf("expected: %v got: %v", tc.want, got)
 		}
