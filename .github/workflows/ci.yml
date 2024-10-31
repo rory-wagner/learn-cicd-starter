@@ -24,9 +24,6 @@ jobs:
       - name: See Code Coverage
         run: go test -cover ./...
 
-      - name: Exit
-        run: (exit 0)
-
   style:
     name: Style
     runs-on: ubuntu-latest
@@ -40,6 +37,9 @@ jobs:
       
       - name: Install staticcheck
         run: go install honnef.co/go/tools/cmd/staticcheck@latest
+
+      - name: Fix staticcheck path
+        run: echo 'export PATH=$PATH:$GOPATH/bin' >> ~/.bashrc; source ~/.bashrc
 
       - name: Run staticcheck
         run: staticcheck ./...
